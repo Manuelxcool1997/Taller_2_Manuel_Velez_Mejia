@@ -1,0 +1,18 @@
+internal class cartaEquip : carta
+    {
+        internal enum EAttribute
+        {
+            AP,RP,ALL
+        }
+        public int EquipP { get;  set; }
+        public EAffinity Affinity { get;  set; }
+        public EAttribute TA { get;  set; }
+        public cartaEquip(String nombre, ERarity rarity,EAttribute ta,int equipP,EAffinity affinity) : base(nombre,rarity)
+        {
+            EquipP = equipP;
+            Affinity = affinity;
+            TA = ta;
+
+        }
+    }
+}

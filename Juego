@@ -1,0 +1,224 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+internal class Juego
+    {
+        int per = 0;
+        int equi = 0;
+        int skill = 0;
+        public Juego(Jugador jugador1, Jugador jugador2)
+        {
+            ganador(jugador1, jugador2);
+        }
+        private Jugador.EJugador turno = Jugador.EJugador.Jugador1;
+        
+        public void invocarCartatablero(carta delta, Jugador alfa)
+        {
+            if(delta is Carta_personaje)
+            {
+                alfa.cartaList.Add(delta);
+                
+            }
+        }
+
+        public void inicioDejuego(baraja baraja1,Jugador jugador1,baraja baraja2,Jugador jugador2)
+        {
+            for(int i = 0; i < 3; i++)
+            {
+                jugador1.cartasMano[i]=baraja1.cartas[i];
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                jugador2.cartasMano[i] = baraja2.cartas[i];
+            }
+        }
+
+        public void agarrarNuevaCarta(Jugador jugador, baraja baraja)
+        {
+            if(jugador.cartasMano.Length==3)
+            {
+                jugador.cartasDescarte.Add(baraja.cartas[0]);
+            }
+            else
+            {
+                for(int i=0; i<jugador.cartasMano.Length; i++)
+                {
+                    if(jugador.cartasMano[i]==null)
+                    {
+                        jugador.cartasMano[i] = baraja.cartas[0];
+                    }
+                }
+            }
+        }
+
+        public void cambiarturno(Jugador jugador1, Jugador jugador2)
+        {
+            jugador1.Enturno = !jugador1.Enturno;
+            jugador2.Enturno = !jugador2.Enturno;
+
+        }
+        public void equiparEquipo(carta alfa, carta beta)
+        {
+            if(alfa is cartaEquip && beta is Carta_personaje)
+            {
+                Carta_personaje b = (Carta_personaje)beta;
+                cartaEquip a = (cartaEquip)alfa;
+                if(a.TA==cartaEquip.EAttribute.AP)
+                {
+                    b.AttackP = b.AttackP + a.EquipP;
+                    b.agregarCartaEquipo(a);
+                }
+                else if(a.TA==cartaEquip.EAttribute.RP)
+                {
+                    b.ResistP= b.ResistP + a.EquipP;
+                    b.agregarCartaEquipo(a);
+                }
+                else
+                {
+                    b.AttackP = b.AttackP + a.EquipP;
+                    b.ResistP = b.ResistP + a.EquipP;
+                    b.agregarCartaEquipo(a);
+
+                }
+               
+            }
+        }
+
+        public void usarSkill(carta alfa, carta beta,int x,Jugador jugador)
+        {
+            if (alfa is cartaEquip && beta is Carta_personaje)
+            {
+                Carta_personaje b = (Carta_personaje)beta;
+                cartaSupportSkill a = (cartaSupportSkill)alfa;
+                if (a.EffectType == cartaSupportSkill.EEffectType.DestroyEquip)
+                {
+                    for (int i = 0; i < b.equipo.Length; i++)
+                    {
+                        if (i == x)
+                        {
+                            b.AttackP = b.AttackP - b.equipo[i].EquipP;
+                            b.ResistP = b.ResistP - b.equipo[i].EquipP;
+                            b.equipo[i] = null;
+                            jugador.cartasDescarte.Add(alfa);
+                        }
+                    }
+                }
+                else if (a.EffectType == cartaSupportSkill.EEffectType.ReduceAll)
+                {
+                    b.AttackP = b.AttackP - a.EffectP;
+                    b.ResistP = b.ResistP - a.EffectP;
+                    jugador.cartasDescarte.Add(alfa);
+                }
+                else if (a.EffectType == cartaSupportSkill.EEffectType.ReduceAP)
+                {
+                    b.AttackP = b.AttackP - a.EffectP;
+                    jugador.cartasDescarte.Add(alfa);
+                }
+
+                else if (a.EffectType == cartaSupportSkill.EEffectType.ReduceRP)
+                {
+         
+                    b.ResistP = b.ResistP - a.EffectP;
+                    jugador.cartasDescarte.Add(alfa);
+                }
+                else
+                {
+                    b.ResistP = b.ResistP + a.EffectP;
+                    jugador.cartasDescarte.Add(alfa);
+                }
+                }
+
+            }
+
+        public void atacarPeon(Carta_personaje alfa, Carta_personaje beta)
+        {
+            if((alfa.invocado==true && alfa.muerto==false) && (beta.invocado==true && beta.muerto==false))
+            { if (alfa.Affinity.Equals(carta.EAffinity.Knight) && beta.Affinity.Equals(carta.EAffinity.Mage))
+                    {
+                    beta.ResistP = beta.ResistP - alfa.AttackP + 1;
+                        }
+                else if (alfa.Affinity.Equals(carta.EAffinity.Mage) && beta.Affinity.Equals(carta.EAffinity.Undead))
+                        {
+                    beta.ResistP = beta.ResistP - alfa.AttackP + 1;
+                }
+                else if (alfa.Affinity.Equals(carta.EAffinity.Undead) && beta.Affinity.Equals(carta.EAffinity.Knight))
+                {
+                    beta.ResistP = beta.ResistP - alfa.AttackP + 1;
+                }
+                else
+                {
+                    beta.ResistP = beta.ResistP - alfa.AttackP;
+                }
+                    if (beta.ResistP <= 0)
+                {
+                    beta.muerto = true;
+                }
+            }
+        }
+
+        public void agregarCartaBaraja(baraja bar,carta delta)
+            {
+            
+            if (bar.cartas.Count <= 20)
+            {
+                if (delta.GetType() == typeof(Carta_personaje) && per <= 5)
+                {
+                    
+                    if (bar.CostPoints - delta.CP > 0)
+                    {
+                        bar.cartas.Add(delta);
+                        per++;
+                    }
+                }
+                else if (delta.GetType() == typeof(cartaEquip) && per <= 10)
+                {
+                    if (bar.CostPoints - delta.CP > 0)
+                    {
+                        bar.cartas.Add(delta);
+                        equi++;
+                    }
+                }
+               else if (delta.GetType() == typeof(cartaSupportSkill) && per <= 5)
+                {
+                    if (bar.CostPoints - delta.CP > 0)
+                    {
+                        bar.cartas.Add(delta);
+                        skill++;
+                    }
+                }
+            }
+                
+        }
+        public void atacarContrincante(Carta_personaje delta,Jugador alfa, Jugador beta, int x)
+        {
+            if (beta.cartaList.Count > 0)
+            {
+                if (x >= 0 && x < beta.cartaList.Count)
+                {
+                    atacarPeon((Carta_personaje)delta, (Carta_personaje)beta.cartaList[x]);
+                }
+            }
+            else
+            {
+                beta.RP = beta.RP - delta.AttackP;
+            }
+
+            }
+
+        public void ganador(Jugador jugador1, Jugador jugador2)
+        {
+            if(jugador1.RP<=0)
+            {
+                jugador2.gano= true;
+            }
+            else if(jugador2.RP<=0)
+            {
+                jugador1.gano = true;
+            }
+        }
+                 }
+
+            }

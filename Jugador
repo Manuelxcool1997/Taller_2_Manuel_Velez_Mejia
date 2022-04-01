@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+internal class Jugador
+    {
+        internal enum EJugador
+        {
+            Jugador1,Jugador2
+        }
+        public bool gano;
+        public carta[] cartasMano=new carta[3];
+        public List<carta> cartasDescarte= new List<carta>();
+        public bool Enturno { get; set; }
+        public int RP { get;  set; }
+        public EJugador Dor { get;  set; }
+
+        public List<carta> cartaList = new List<carta>();
+
+        public Jugador( EJugador dor,int rp, bool enturno  )
+        {
+            Dor = dor;
+            RP = rp;
+            Enturno = enturno;
+        }
+    }
+}

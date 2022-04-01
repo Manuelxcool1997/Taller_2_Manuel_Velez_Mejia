@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ 
+ internal abstract class carta
+    {
+        internal enum ERarity
+        {
+            Common,Rare,Super_Rare, Ultra_Rare
+        }
+
+        public bool invocado = false;
+        public bool muerto = false;
+        internal enum EAffinity
+        {
+            Mage, Undead, Knight
+        }
+        public String Nombre { get;  set; }
+        public ERarity Rarity { get; set; }
+        public int CP { get; protected set; }
+
+        public carta(String nombre, ERarity rarity)
+        {
+            Nombre = nombre;
+            Rarity=rarity;
+        }
+
+    }
+}

@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+internal class Gatcha
+    {
+        Random random = new Random();
+        carta cartaObtenida;
+
+        public void obtenercarta()
+        {
+            carta cartaObtenida;
+            int numero = random.Next(0, 1000);
+            if (numero >= 0 && numero <= 120)
+            {
+                cartaObtenida = new Carta_personaje("zalgo", carta.ERarity.Common, carta.EAffinity.Knight);
+            }
+            else if (numero > 120 && numero <= 170)
+            {
+                cartaObtenida = new Carta_personaje("zalgo2", carta.ERarity.Rare, carta.EAffinity.Mage);
+            }
+            else if (numero > 170 && numero <= 195)
+            {
+                cartaObtenida = new Carta_personaje("zalgo3", carta.ERarity.Super_Rare, carta.EAffinity.Knight);
+            }
+            else if (numero > 195 && numero <= 200)
+            {
+                cartaObtenida = new Carta_personaje("zalgo4", carta.ERarity.Ultra_Rare, carta.EAffinity.Knight);
+            }
+            else if (numero > 200 && numero <= 400)
+            {
+                cartaObtenida = new cartaEquip("zalgo5", carta.ERarity.Common, cartaEquip.EAttribute.ALL, 12, carta.EAffinity.Undead);
+            }
+            else if (numero > 400 && numero <= 470)
+            {
+                cartaObtenida = new cartaEquip("zalgo6", carta.ERarity.Rare, cartaEquip.EAttribute.ALL, 15, carta.EAffinity.Knight);
+            }
+            else if (numero > 470 && numero <= 495)
+            {
+                cartaObtenida = new cartaEquip("zalgo7", carta.ERarity.Super_Rare, cartaEquip.EAttribute.ALL, 17, carta.EAffinity.Mage);
+            }
+            else if (numero > 495 && numero <= 500)
+            {
+                cartaObtenida = new cartaEquip("zalgo8", carta.ERarity.Ultra_Rare, cartaEquip.EAttribute.ALL, 17, carta.EAffinity.Knight);
+            }
+            else if (numero > 500 && numero <= 870)
+            {
+                cartaObtenida = new cartaSupportSkill("zalgo10", carta.ERarity.Common, 10,cartaSupportSkill.EEffectType.DestroyEquip);
+            }
+            else if (numero > 870 && numero <= 970)
+            {
+                cartaObtenida = new cartaSupportSkill("zalgo11", carta.ERarity.Rare, 10, cartaSupportSkill.EEffectType.DestroyEquip);
+            }
+            else if (numero > 970 && numero <= 995)
+            {
+                cartaObtenida = new cartaSupportSkill("zalgo12", carta.ERarity.Super_Rare, 10, cartaSupportSkill.EEffectType.DestroyEquip);
+            }
+            else if (numero > 995 && numero <= 1000)
+            {
+                cartaObtenida = new cartaSupportSkill("zalgo13", carta.ERarity.Ultra_Rare, 10, cartaSupportSkill.EEffectType.DestroyEquip);
+            }
+
+           
+        }
+
+        public carta regresarcarta()
+        {
+            return cartaObtenida;
+        }
+    }
+}

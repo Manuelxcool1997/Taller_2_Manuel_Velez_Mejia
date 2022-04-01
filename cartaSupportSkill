@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+internal class cartaSupportSkill : carta
+    {
+        internal enum EEffectType
+        {
+            ReduceAP, ReduceRP, ReduceAll, DestroyEquip, RestoreRP.
+        }
+
+        public int EffectP { get; protected set; }
+        public EEffectType EffectType { get; protected set; }
+
+        public cartaSupportSkill(String nombre,ERarity rarity,int effectP,EEffectType eEffectType ) : base(nombre,rarity)
+        {
+            EffectP = effectP;
+            EffectType = eEffectType;
+        }
+    }
+}
