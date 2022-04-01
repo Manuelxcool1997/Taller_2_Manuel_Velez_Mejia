@@ -1,0 +1,168 @@
+using System;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+using static Taller_2.Juego;
+
+namespace Taller_2
+{
+    internal class Test
+    { 
+
+
+    
+
+   
+    carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare,2, carta.EAffinity.Knight,1,2);
+        carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage,3,4);
+        carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead,5,6);
+        carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4,cartaEquip.EAttribute.ALL,5,carta.EAffinity.Mage );
+        carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+        carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4,5,cartaSupportSkill.EEffectType.ReduceRP ;
+
+
+        public void testInvocarCartaTablero()
+        {
+
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            
+            Juego juego= new Juego(jugador1, jugador2);
+            juego.invocarCartatablero(carta1,jugador1);
+            Assert.IsFalse(jugador1.cartaList = null);
+        }
+
+        public void testInicioDelJuego()
+        {
+
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.agregarCartaBaraja(baraja1, carta1);
+            juego.agregarCartaBaraja(baraja1, carta2);
+            juego.agregarCartaBaraja(baraja1, carta3);
+            juego.agregarCartaBaraja(baraja1, carta4);
+            juego.agregarCartaBaraja(baraja1, carta5);
+            juego.agregarCartaBaraja(baraja2, carta1);
+            juego.agregarCartaBaraja(baraja2, carta2);
+            juego.agregarCartaBaraja(baraja2, carta3);
+            juego.agregarCartaBaraja(baraja2, carta4);
+            juego.agregarCartaBaraja(baraja2, carta5);
+            juego.inicioDejuego(baraja1, jugador1, baraja2, jugador2);
+            Assert.IsTrue(jugador1.cartasMano.Length == 3);
+            Assert.IsTrue(jugador2.cartasMano.Length == 3);
+            
+        }
+
+        public void agregarNuevaCarta()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.agregarCartaBaraja(baraja1, carta1);
+            juego.agregarCartaBaraja(baraja1, carta2);
+            juego.agregarCartaBaraja(baraja1, carta3);
+            juego.agregarCartaBaraja(baraja1, carta4);
+            juego.agregarCartaBaraja(baraja1, carta5);
+            juego.agregarCartaBaraja(baraja2, carta1);
+            juego.agregarCartaBaraja(baraja2, carta2);
+            juego.agregarCartaBaraja(baraja2, carta3);
+            juego.agregarCartaBaraja(baraja2, carta4);
+            juego.agregarCartaBaraja(baraja2, carta5);
+            juego.agarrarNuevaCarta(jugador1, baraja1);
+
+            Assert.IsTrue(jugador1.cartasMano.Length == 1);
+
+
+        }
+
+        public void testCambiarturno()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.cambiarturno(jugador1,jugador2);
+
+            Assert.IsTrue(jugador1.Enturno == false);
+            Assert.IsFalse(jugador1.Enturno == false);
+
+        }
+
+        public void testEquiparEquipo()
+        {
+
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.equiparEquipo(carta4, carta2);
+            Carta_personaje a = (Carta_personaje)carta2;
+            Assert.IsTrue(a.AttackP == 8);
+            juego.equiparEquipo(carta5, carta2);
+            Carta_personaje b = (Carta_personaje)carta2;
+            Assert.IsTrue(a.AttackP == 8);
+
+        }
+        public void testUsarSkill()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.usarSkill(carta6, carta3, jugador1);
+            Carta_personaje a = (Carta_personaje)carta3;
+            Assert.IsTrue(a.ResistP == 1);
+
+
+        }
+
+        public void testAtacarPeon()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.atacarPeon((Carta_personaje) carta1, (Carta_personaje)carta3);
+            Carta_personaje a = (Carta_personaje)carta3;
+            Assert.IsTrue(a.ResistP == 0);
+
+
+        }
+        public void testAgregarCartaBaraja()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.agregarCartaBaraja(baraja1, carta6);
+
+            Assert.IsFalse(baraja1.cartas.Dequeue() == null);
+        }
+
+        public void testAtacarContrincante()
+        {
+            baraja baraja1 = new baraja(100);
+            baraja baraja2 = new baraja(100);
+            Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
+            Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
+            Juego juego = new Juego(jugador1, jugador2);
+            juego.atacarContrincante((Carta_personaje)carta1,jugador1,jugador2,2);
+            Assert.IsTrue(jugador1.RP == 99);
+
+        }
+},
+}

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class cartaSupportSkill : carta
+namespace Taller_2
+{
+    internal class cartaSupportSkill : carta
     {
         internal enum EEffectType
         {
@@ -14,7 +16,7 @@ internal class cartaSupportSkill : carta
         public int EffectP { get; protected set; }
         public EEffectType EffectType { get; protected set; }
 
-        public cartaSupportSkill(String nombre,ERarity rarity,int effectP,EEffectType eEffectType ) : base(nombre,rarity)
+        public cartaSupportSkill(String nombre,ERarity rarity,int cp,int effectP,EEffectType eEffectType ) : base(nombre,rarity,cp)
         {
             EffectP = effectP;
             EffectType = eEffectType;

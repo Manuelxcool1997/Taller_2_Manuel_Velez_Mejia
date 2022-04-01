@@ -4,10 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class baraja
+namespace Taller_2
+{
+    internal class baraja
     {
 
         public int CostPoints { get; protected set; } 
-            public List<carta> cartas= new List<carta>();
+            public Queue<carta> cartas= new Queue<carta> ();
+        public baraja(int costpoints)
+        {
+            CostPoints = costpoints;
+        }
     }
 }

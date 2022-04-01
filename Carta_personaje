@@ -4,21 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-  internal class cartaEquip : carta
+namespace Taller_2
+{
+    internal class Carta_personaje : carta
     {
-        internal enum EAttribute
-        {
-            AP,RP,ALL
-        }
-        public int EquipP { get;  set; }
-        public EAffinity Affinity { get;  set; }
-        public EAttribute TA { get;  set; }
-        public cartaEquip(String nombre, ERarity rarity,EAttribute ta,int equipP,EAffinity affinity) : base(nombre,rarity)
-        {
-            EquipP = equipP;
-            Affinity = affinity;
-            TA = ta;
 
+        public int AttackP { get;  set; }
+        public int ResistP { get; set; }
+
+ 
+
+        public cartaEquip[] equipo = new cartaEquip[3];
+        public void agregarCartaEquipo(cartaEquip delta)
+        {
+            if (delta != null)
+            {
+                for (int i = 0; i < equipo.Length; i++)
+                {
+                    if (i == null)
+                    {
+                        equipo[i] = delta;
+                        break;
+                    }
+                }
+            }
         }
+
+        public EAffinity Affinity { get; protected set; }
+
+        public Carta_personaje(String nombre, ERarity rarity,int cp, EAffinity affinity,int atackp,int resistP) : base(nombre, rarity,cp)
+        {
+            Affinity = affinity;
+            ResistP = resistP;
+            AttackP = atackp;
+        } 
+
     }
 }

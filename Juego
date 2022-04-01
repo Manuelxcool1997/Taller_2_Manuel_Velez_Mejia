@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class Juego
+namespace Taller_2
+{
+    
+    internal class Juego
     {
         int per = 0;
         int equi = 0;
@@ -28,11 +31,11 @@ internal class Juego
         {
             for(int i = 0; i < 3; i++)
             {
-                jugador1.cartasMano[i]=baraja1.cartas[i];
+                jugador1.cartasMano[i] = baraja1.cartas.Dequeue();
             }
             for (int i = 0; i < 3; i++)
             {
-                jugador2.cartasMano[i] = baraja2.cartas[i];
+                jugador2.cartasMano[i] = baraja2.cartas.Dequeue();
             }
         }
 
@@ -40,7 +43,7 @@ internal class Juego
         {
             if(jugador.cartasMano.Length==3)
             {
-                jugador.cartasDescarte.Add(baraja.cartas[0]);
+                jugador.cartasDescarte.Add(baraja.cartas.Dequeue());
             }
             else
             {
@@ -48,7 +51,7 @@ internal class Juego
                 {
                     if(jugador.cartasMano[i]==null)
                     {
-                        jugador.cartasMano[i] = baraja.cartas[0];
+                        jugador.cartasMano[i] = baraja.cartas.Dequeue();
                     }
                 }
             }
@@ -66,28 +69,70 @@ internal class Juego
             {
                 Carta_personaje b = (Carta_personaje)beta;
                 cartaEquip a = (cartaEquip)alfa;
-                if(a.TA==cartaEquip.EAttribute.AP)
+                if (b.Affinity.Equals(Carta_personaje.EAffinity.Mage) && a.Affinity.Equals(cartaEquip.EAffinity.Mage))
                 {
-                    b.AttackP = b.AttackP + a.EquipP;
-                    b.agregarCartaEquipo(a);
-                }
-                else if(a.TA==cartaEquip.EAttribute.RP)
-                {
-                    b.ResistP= b.ResistP + a.EquipP;
-                    b.agregarCartaEquipo(a);
-                }
-                else
-                {
-                    b.AttackP = b.AttackP + a.EquipP;
-                    b.ResistP = b.ResistP + a.EquipP;
-                    b.agregarCartaEquipo(a);
+                    if (a.TA == cartaEquip.EAttribute.AP)
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else if (a.TA == cartaEquip.EAttribute.RP)
+                    {
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
 
+                    }
                 }
-               
+                else if(b.Affinity.Equals(Carta_personaje.EAffinity.Knight) && a.Affinity.Equals(cartaEquip.EAffinity.Knight))
+                {
+                    if (a.TA == cartaEquip.EAttribute.AP)
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else if (a.TA == cartaEquip.EAttribute.RP)
+                    {
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+
+                    }
+                }
+               else if (b.Affinity.Equals(Carta_personaje.EAffinity.Undead) && a.Affinity.Equals(cartaEquip.EAffinity.Undead))
+                {
+                    if (a.TA == cartaEquip.EAttribute.AP)
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else if (a.TA == cartaEquip.EAttribute.RP)
+                    {
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+                    }
+                    else
+                    {
+                        b.AttackP = b.AttackP + a.EquipP;
+                        b.ResistP = b.ResistP + a.EquipP;
+                        b.agregarCartaEquipo(a);
+
+                    }
+                }
             }
         }
 
-        public void usarSkill(carta alfa, carta beta,int x,Jugador jugador)
+        public void usarSkill(carta alfa, carta beta,Jugador jugador)
         {
             if (alfa is cartaEquip && beta is Carta_personaje)
             {
@@ -95,16 +140,13 @@ internal class Juego
                 cartaSupportSkill a = (cartaSupportSkill)alfa;
                 if (a.EffectType == cartaSupportSkill.EEffectType.DestroyEquip)
                 {
-                    for (int i = 0; i < b.equipo.Length; i++)
-                    {
-                        if (i == x)
-                        {
+                   
+                      
                             b.AttackP = b.AttackP - b.equipo[i].EquipP;
                             b.ResistP = b.ResistP - b.equipo[i].EquipP;
                             b.equipo[i] = null;
                             jugador.cartasDescarte.Add(alfa);
-                        }
-                    }
+                     
                 }
                 else if (a.EffectType == cartaSupportSkill.EEffectType.ReduceAll)
                 {
@@ -132,6 +174,8 @@ internal class Juego
                 }
 
             }
+
+        
 
         public void atacarPeon(Carta_personaje alfa, Carta_personaje beta)
         {
@@ -169,7 +213,7 @@ internal class Juego
                     
                     if (bar.CostPoints - delta.CP > 0)
                     {
-                        bar.cartas.Add(delta);
+                        bar.cartas.Enqueue(delta);
                         per++;
                     }
                 }
@@ -177,7 +221,7 @@ internal class Juego
                 {
                     if (bar.CostPoints - delta.CP > 0)
                     {
-                        bar.cartas.Add(delta);
+                        bar.cartas.Enqueue(delta);
                         equi++;
                     }
                 }
@@ -185,7 +229,7 @@ internal class Juego
                 {
                     if (bar.CostPoints - delta.CP > 0)
                     {
-                        bar.cartas.Add(delta);
+                        bar.cartas.Enqueue(delta);
                         skill++;
                     }
                 }
@@ -222,3 +266,12 @@ internal class Juego
                  }
 
             }
+
+
+
+
+        
+
+    
+   
+

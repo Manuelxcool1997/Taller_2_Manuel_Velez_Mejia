@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-internal class Jugador
+namespace Taller_2
+{
+    internal class Jugador
     {
         internal enum EJugador
         {

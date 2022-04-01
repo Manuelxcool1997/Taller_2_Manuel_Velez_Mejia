@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
- 
- internal abstract class carta
+
+namespace Taller_2
+{
+    internal abstract class carta
     {
         internal enum ERarity
         {
@@ -21,11 +23,13 @@ using System.Threading.Tasks;
         public ERarity Rarity { get; set; }
         public int CP { get; protected set; }
 
-        public carta(String nombre, ERarity rarity)
+        public carta(String nombre, ERarity rarity,int cp)
         {
             Nombre = nombre;
             Rarity=rarity;
+            CP=cp;
         }
 
     }
 }
+

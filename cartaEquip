@@ -1,4 +1,12 @@
-internal class cartaEquip : carta
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Taller_2
+{
+    internal class cartaEquip : carta
     {
         internal enum EAttribute
         {
@@ -7,7 +15,7 @@ internal class cartaEquip : carta
         public int EquipP { get;  set; }
         public EAffinity Affinity { get;  set; }
         public EAttribute TA { get;  set; }
-        public cartaEquip(String nombre, ERarity rarity,EAttribute ta,int equipP,EAffinity affinity) : base(nombre,rarity)
+        public cartaEquip(String nombre, ERarity rarity,int cp,EAttribute ta,int equipP,EAffinity affinity) : base(nombre,rarity,cp)
         {
             EquipP = equipP;
             Affinity = affinity;
