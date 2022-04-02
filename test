@@ -16,18 +16,18 @@ namespace Taller_2
 
     
 
-   
-    carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare,2, carta.EAffinity.Knight,1,2);
-        carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage,3,4);
-        carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead,5,6);
-        carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4,cartaEquip.EAttribute.ALL,5,carta.EAffinity.Mage );
-        carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
-        carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4,5,cartaSupportSkill.EEffectType.ReduceRP ;
+
 
 
         public void testInvocarCartaTablero()
         {
 
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
             Jugador jugador2 = new Jugador(Jugador.EJugador.Jugador2, 100, false);
             
@@ -39,6 +39,12 @@ namespace Taller_2
         public void testInicioDelJuego()
         {
 
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -62,6 +68,13 @@ namespace Taller_2
 
         public void agregarNuevaCarta()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -86,6 +99,13 @@ namespace Taller_2
 
         public void testCambiarturno()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -101,6 +121,12 @@ namespace Taller_2
         public void testEquiparEquipo()
         {
 
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -116,6 +142,13 @@ namespace Taller_2
         }
         public void testUsarSkill()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -130,6 +163,13 @@ namespace Taller_2
 
         public void testAtacarPeon()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -137,12 +177,19 @@ namespace Taller_2
             Juego juego = new Juego(jugador1, jugador2);
             juego.atacarPeon((Carta_personaje) carta1, (Carta_personaje)carta3);
             Carta_personaje a = (Carta_personaje)carta3;
-            Assert.IsTrue(a.ResistP == 0);
+            Assert.IsTrue(a.ResistP == 5);
 
 
         }
         public void testAgregarCartaBaraja()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
@@ -155,6 +202,13 @@ namespace Taller_2
 
         public void testAtacarContrincante()
         {
+
+            carta carta1 = new Carta_personaje("Petronilo", carta.ERarity.Ultra_Rare, 2, carta.EAffinity.Knight, 1, 2);
+            carta carta2 = new Carta_personaje("Fumoshi", carta.ERarity.Ultra_Rare, 3, carta.EAffinity.Mage, 3, 4);
+            carta carta3 = new Carta_personaje("Rachu", carta.ERarity.Ultra_Rare, 4, carta.EAffinity.Undead, 5, 6);
+            carta carta4 = new cartaEquip("casco", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.ALL, 5, carta.EAffinity.Mage);
+            carta carta5 = new cartaEquip("pechera", carta.ERarity.Ultra_Rare, 4, cartaEquip.EAttribute.AP, 5, carta.EAffinity.Undead);
+            carta carta6 = new cartaSupportSkill("tempano", carta.ERarity.Ultra_Rare, 4, 5, cartaSupportSkill.EEffectType.ReduceRP);
             baraja baraja1 = new baraja(100);
             baraja baraja2 = new baraja(100);
             Jugador jugador1 = new Jugador(Jugador.EJugador.Jugador1, 100, true);
